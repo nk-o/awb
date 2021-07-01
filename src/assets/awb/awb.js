@@ -623,9 +623,13 @@ window.nkAwbInit = function() {
 };
 
 // init awb.
-window.nkAwbInit();
-const throttledInitAwb = throttle( 200, () => {
+$( document ).ready( () => {
     window.nkAwbInit();
+} );
+const throttledInitAwb = throttle( 200, () => {
+    $( document ).ready( () => {
+        window.nkAwbInit();
+    } );
 } );
 if ( window.MutationObserver ) {
     new window.MutationObserver( throttledInitAwb )
